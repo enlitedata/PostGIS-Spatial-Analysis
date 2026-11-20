@@ -4,7 +4,7 @@
 -- Description: Attribute enrichment, geodesic area calculation, QA/QC topology 
 --              validation, and rule-based Commercial/Residential classification.
 -- ============================================================================
-
+SELECT * FROM buildings_db;
 -- 1. Populate missing building names
 UPDATE buildings_db
 SET bld_name = 'Building ' || id
@@ -49,5 +49,10 @@ GROUP BY building_type;
 
 -- 6. Final Dataset Inspection (Includes geom for pgAdmin Geometry Viewer)
 SELECT id, bld_name, area_sq_m, building_type, geom
+FROM buildings_db
+ORDER BY area_sq_m DESC;
+
+-- 7. Final Dataset Inspection
+SELECT id, bld_name, area_sq_m, building_type
 FROM buildings_db
 ORDER BY area_sq_m DESC;
